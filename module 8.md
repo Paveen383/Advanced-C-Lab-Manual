@@ -15,21 +15,39 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    int n;
 
+    printf("Enter a number (5-13): ");
+    scanf("%d", &n);
 
+    switch(n)
+    {
+        case 5: printf("seventy one"); break;
+        case 6: printf("seventy two"); break;
+        case 7: printf("seventy three"); break;
+        case 8: printf("seventy four"); break;
+        case 9: printf("seventy five"); break;
+        case 10: printf("seventy six"); break;
+        case 11: printf("seventy seven"); break;
+        case 12: printf("seventy eight"); break;
+        case 13: printf("seventy nine"); break;
+        default: printf("Greater than 13");
+    }
 
+    return 0;
+}
 
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+```
+Enter a number (5-13): 8
+seventy four
+```
 
 Result:
 Thus, the program is verified successfully
@@ -46,19 +64,42 @@ Algorithm:
 6.	End
  
 Program:
+```
+#include <stdio.h>
+#include <string.h>
 
-//type your code here
+int main()
+{
+    char a[50];
+    int h, i, c;
 
+    printf("Enter a string: ");
+    scanf("%s", a);
+
+    for(h = 0; h <= 3; h++)
+    {
+        c = 0;
+
+        for(i = 0; a[i] != '\0'; i++)
+        {
+            if(a[i] - '0' == h)
+                c++;
+        }
+
+        printf("%d ", c);
+    }
+
+    return 0;
+}
+```
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
+```
+Enter a string: 0123012301
+3 3 2 2
+```
 
 
 
@@ -83,24 +124,63 @@ Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
 Program:
+```
+#include <stdio.h>
+#include <string.h>
 
-//type your code here
+void swap(char *a, char *b)
+{
+    char t = *a;
+    *a = *b;
+    *b = t;
+}
 
+void permute(char str[], int l, int r)
+{
+    int i;
 
+    if(l == r)
+        printf("%s\n", str);
+    else
+    {
+        for(i = l; i <= r; i++)
+        {
+            swap(&str[l], &str[i]);
+            permute(str, l + 1, r);
+            swap(&str[l], &str[i]);
+        }
+    }
+}
+
+int main()
+{
+    char str[20];
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    permute(str, 0, strlen(str) - 1);
+
+    return 0;
+}
+```
 
 
 Output:
+```
+Enter a string: ABC
 
-
-//paste your output here
-
-
-
-
-
+ABC
+ACB
+BAC
+BCA
+CBA
+CAB
+```
 
 Result:
 Thus, the program is verified successfully
+
  
 EXP NO:9 C PROGRAM PRINT A PATTERN OF NUMBERS FROM 1 TO N AS
 SHOWN BELOW.
@@ -116,24 +196,64 @@ Algorithm:
 7.	End
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    int n, i, j, min;
+    int len;
 
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    len = 2 * n - 1;
+
+    for(i = 0; i < len; i++)
+    {
+        for(j = 0; j < len; j++)
+        {
+            min = i;
+
+            if(j < min)
+                min = j;
+
+            if(len - i - 1 < min)
+                min = len - i - 1;
+
+            if(len - j - 1 < min)
+                min = len - j - 1;
+
+            printf("%d ", n - min);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
 
 
 
 Output:
+```
+Enter n: 4
 
+4 4 4 4 4 4 4
+4 3 3 3 3 3 4
+4 3 2 2 2 3 4
+4 3 2 1 2 3 4
+4 3 2 2 2 3 4
+4 3 3 3 3 3 4
+4 4 4 4 4 4 4
 
-//paste your output here
-
-
-
-
+```
 
 
 Result:
 Thus, the program is verified successfully
+
 
 EXP NO:10 C PROGRAM TO FIND A SQUARE  OF NUMBER USING FUNCTION WITHOUT ARGUMENTS WITH RETURN TYPE
 
@@ -155,48 +275,39 @@ o	Call the square() function and display the result.
 5.	End.
 
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int square()
+{
+    int n;
 
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    return n * n;
+}
+
+int main()
+{
+    int result;
+
+    result = square();
+
+    printf("Square = %d", result);
+
+    return 0;
+}
+```
 
 
 
 Output:
+```
+Enter a number: 12
+Square = 144
 
-
-//paste your output here
-
-
-
-
-
+```
 
 Result:
 Thus, the program is verified successfully
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
