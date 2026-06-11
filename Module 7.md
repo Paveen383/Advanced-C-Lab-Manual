@@ -16,13 +16,47 @@ Else
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+struct eligible
+{
+    int age;
+    char n[50];
+};
+
+int main()
+{
+    struct eligible e;
+
+    printf("Enter Name: ");
+    scanf("%s", e.n);
+
+    printf("Enter Age: ");
+    scanf("%d", &e.age);
+
+    if(e.age <= 6)
+        printf("Vaccine Eligibility: No\n");
+    else
+        printf("Vaccine Eligibility: Yes\n");
+
+    printf("Name : %s\n", e.n);
+    printf("Age  : %d\n", e.age);
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
-
+```
+Enter Name: Aftab
+Enter Age: 19
+Vaccine Eligibility: Yes
+Name : Aftab
+Age  : 19
+```
 
 Result:
 Thus, the program is verified successfully. 
@@ -44,16 +78,46 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+struct numbers
+{
+    int a;
+    int b;
+    int sum;
+};
+
+struct numbers add(struct numbers n)
+{
+    n.sum = n.a + n.b;
+    return n;
+}
+
+int main()
+{
+    struct numbers n;
+
+    printf("Enter two numbers: ");
+    scanf("%d%d", &n.a, &n.b);
+
+    n = add(n);
+
+    printf("Sum = %d", n.sum);
+
+    return 0;
+}
+
+```
 
 
 
 Output:
+```
+Enter two numbers: 15 25
+Sum = 40
 
-
-//paste your output here
-
+```
 
 
 
@@ -86,23 +150,47 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+```
+`#include <stdio.h>
+#include <stdlib.h>
 
+int main()
+{
+    FILE *p;
+    char name[50];
+
+    printf("Enter file name: ");
+    scanf("%s", name);
+
+    p = fopen(name, "w");
+
+    if(p == NULL)
+    {
+        printf("File cannot be created\n");
+        return 1;
+    }
+
+    printf("File %s created successfully\n", name);
+    printf("File opened successfully\n");
+
+    fclose(p);
+
+    printf("File closed successfully\n");
+
+    return 0;
+}
+
+```
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
-
-
-
+```
+Enter file name: sample.txt
+File sample.txt created successfully
+File opened successfully
+File closed successfully
+```
 
 
 
@@ -133,19 +221,62 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+int main()
+{
+    FILE *p;
+    char name[50], text[100];
+    int num, i;
+
+    printf("Enter file name: ");
+    scanf("%s", name);
+
+    printf("Enter number of strings: ");
+    scanf("%d", &num);
+
+    p = fopen(name, "w");
+
+    if(p == NULL)
+    {
+        printf("Unable to open file\n");
+        return 1;
+    }
+
+    printf("Enter strings:\n");
+
+    getchar();
+
+    for(i = 0; i < num; i++)
+    {
+        fgets(text, sizeof(text), stdin);
+        fputs(text, p);
+    }
+
+    fclose(p);
+
+    printf("Data added successfully\n");
+
+    return 0;
+}
+
+
+```
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
+```
+Enter file name: notes.txt
+Enter number of strings: 3
+Enter strings:
+Welcome to C Programming
+File Handling Concept
+Experiment Completed
+Data added successfully
+```
 
 
 Result:
@@ -187,20 +318,75 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+struct Subject
+{
+    char name[50];
+    int marks;
+};
+
+int main()
+{
+    int n, i;
+
+    printf("Enter number of subjects: ");
+    scanf("%d", &n);
+
+    struct Subject *s;
+
+    s = (struct Subject *)malloc(n * sizeof(struct Subject));
+
+    if(s == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    for(i = 0; i < n; i++)
+    {
+        printf("Enter subject name and marks: ");
+        scanf("%s%d", s[i].name, &s[i].marks);
+    }
+
+    printf("\nSubject Details\n");
+
+    for(i = 0; i < n; i++)
+    {
+        printf("Subject: %s\n", s[i].name);
+        printf("Marks  : %d\n", s[i].marks);
+    }
+
+    free(s);
+
+    return 0;
+}
+
+
+```
 
 
 
 Output:
 
+```
 
-//paste your output here
+Enter number of subjects: 3
+Enter subject name and marks: Mathematics 95
+Enter subject name and marks: Physics 90
+Enter subject name and marks: Chemistry 88
 
+Subject Details
+Subject: Mathematics
+Marks  : 95
+Subject: Physics
+Marks  : 90
+Subject: Chemistry
+Marks  : 88
 
-
-
-
+```
 
 Result:
 Thus, the program is verified successfully
